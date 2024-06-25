@@ -14,16 +14,32 @@ const AcquisitionActions = ({ acquisition }) => {
 
   const [selectedAction, setSelectedAction] = useState(null);
 
+  /**
+   * Handles the opening of a specific action on the acquisition.
+   *
+   * @param {string} action - The type of action to be opened, such as "view", "edit", or "delete".
+   */
   const handleOpenAction = (action) => {
     setSelectedAction(action);
     handleOpen();
   };
 
+  /**
+   * Handles the closing of a specific action on the acquisition.
+   *
+   * @function handleCloseAction
+   * @returns {void} - No return value.
+   */
   const handleCloseAction = () => {
     handleClose();
     setSelectedAction(null);
   };
 
+  /**
+   * Renders a dynamic component based on the selected action.
+   *
+   * @returns {JSX.Element} - The rendered component based on the selected action.
+   */
   const renderDynamicComponent = () => {
     switch (selectedAction) {
       case "view":

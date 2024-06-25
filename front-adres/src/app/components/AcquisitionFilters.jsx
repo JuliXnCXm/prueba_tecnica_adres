@@ -3,7 +3,6 @@ import { Form, FloatingLabel , OverlayTrigger, Tooltip} from "react-bootstrap";
 import "../styles/components/AcquisitionForm.css";
 
 const AcquisitionFilters = ({onSubmit}) => {
-
   const initialState = {
     section: "",
     budget: 0,
@@ -14,20 +13,24 @@ const AcquisitionFilters = ({onSubmit}) => {
     total_value: 0,
     active: null,
     documentation: "",
-  }
+  };
 
   const numericKeys = ["quantity", "unit_value", "total_value", "budget"];
 
-
   const [filters, setFilters] = useState({
     ...initialState,
-    active: 'Activo',
+    active: "Activo",
   });
 
+  /**
+   * Handles the input change event for the form fields.
+   * @param {React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>} event - The change event object.
+   * @returns {void} - This function does not return any value.
+   */
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (numericKeys.includes(name)) {
-      if (!/^\d*\.?\d*$/.test(value))  {
+      if (!/^\d*\.?\d*$/.test(value)) {
         return;
       }
       setFilters({
@@ -39,51 +42,65 @@ const AcquisitionFilters = ({onSubmit}) => {
         ...filters,
         [name]: value,
       });
-
     }
   };
 
+
+  /**
+   * Handles the key press event for numeric inputs.
+   * @param {React.KeyboardEvent} event - The keyboard event object.
+   */
   const handleKeyPress = (event) => {
-    // Obtén el código de la tecla presionada
+
     const keyCode = event.keyCode || event.which;
 
-    // Permite solo teclas numéricas (0-9) y teclas de navegación (como flechas, retroceso, etc.)
     if (
-      !(keyCode >= 48 && keyCode <= 57) && // números del teclado principal
-      !(keyCode >= 96 && keyCode <= 105) && // números del teclado numérico
-      keyCode !== 8 && // retroceso
-      keyCode !== 9 && // tab
-      keyCode !== 37 && // flecha izquierda
-      keyCode !== 39 && // flecha derecha
+      !(keyCode >= 48 && keyCode <= 57) && 
+      !(keyCode >= 96 && keyCode <= 105) && 
+      keyCode !== 8 && 
+      keyCode !== 9 && 
+      keyCode !== 37 && 
+      keyCode !== 39 && 
       keyCode !== 46
     ) {
       // suprimir
       event.preventDefault();
     }
-  }
+  };
 
+
+  /**
+   * Handles the form submission.
+   * @param {React.FormEvent} e - The form submission event.
+   */
   const handleSubmit = (e) => {
-    e.preventDefault()
-    let changedKeys = Object.keys(filters).filter(key => filters[key] !== initialState[key])
+    e.preventDefault();
+
+    // Get the keys of the filters object that have been changed from their initial state.
+    let changedKeys = Object.keys(filters).filter(key => filters[key] !== initialState[key]);
+
+    // Create an empty object to store the filtered form data.
     const filteredObject = {};
+
+    // Iterate over the changed keys and add the corresponding values to the filteredObject.
+    // If the key is a numeric key, parse the value as an integer or float accordingly.
+    // Otherwise, add the value as is.
     changedKeys.forEach((key) => {
       if (numericKeys.includes(key)) {
         filteredObject[key] =
           key === "quantity"
             ? parseInt(filters[key])
             : parseFloat(filters[key]);
-
-      } 
-      else if (key === "active") {
-        filteredObject[key] = filters[key];
       } else {
         filteredObject[key] = filters[key];
       }
     });
-    
+
+    // Call the onSubmit function with the filtered form data.
+    // Also, store the filtered form data in the session storage.
     onSubmit(filteredObject);
     window.sessionStorage.setItem("filters", JSON.stringify(filteredObject));
-  }
+  };
 
   return (
     <div>
@@ -215,7 +232,7 @@ const AcquisitionFilters = ({onSubmit}) => {
           <FloatingLabel controlId="active" label="Estado">
             <Form.Select
               name="active"
-              value={ filters.active }
+              value={filters.active}
               onChange={handleChange}
             >
               <option value="Activo">Activo</option>

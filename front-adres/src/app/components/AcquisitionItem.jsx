@@ -12,7 +12,14 @@ const AcquisitionItem = ({ acquisition }) => {
   useEffect(() => {
     setActive(acquisition.active);
   } , [acquisition])
+  
 
+  /**
+   * Handles the change event of the switch input.
+   * Updates the active state of the acquisition and triggers the updateAcquisition function.
+   *
+   * @param {React.FormEvent<HTMLInputElement>} e - The event object.
+   */
   const handleChange = (e) => {
     const isChecked = e.target.checked;
     setActive(e.target.checked);

@@ -57,14 +57,31 @@ const AcquisitionForm = ({
     documentation: Yup.string().required("La documentación es requerida"),
   });
 
+  /**
+   * Handles the form submission.
+   * @param {Object} values - The form values.
+   * @param {Object} actions - The Formik actions object.
+   */
   const handleSubmit = async (values, { setSubmitting }) => {
-    (await isCreation)
-      ? onSubmit(values)
-      : onSubmit(acquisitionData.id, values);
+    // Check if it's a creation or an update.
+    if (await isCreation) {
+      // If it's a creation, call the onSubmit function with the form values.
+      onSubmit(values);
+    } else {
+      // If it's an update, call the onSubmit function with the acquisitionData's id and the form values.
+      onSubmit(acquisitionData.id, values);
+    }
+    
+    // Close the modal.
     handleClose();
+    
+    // Reload the page after a short delay (1000 milliseconds).
+    // This is a temporary solution; consider a more robust approach to update the data.
     setTimeout(() => {
-      window.location.reload(); // Esto es una solución temporal; considera un enfoque más robusto para actualizar los datos.
+      window.location.reload();
     }, 1000);
+    
+    // Set the submitting state to false.
     setSubmitting(false);
   };
 

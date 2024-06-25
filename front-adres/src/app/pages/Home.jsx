@@ -23,11 +23,28 @@ const App = () => {
 
   useEffect(() => {
     let filters = JSON.parse(window.sessionStorage.getItem('filters'))
+    if (filters === null) {
+      window.sessionStorage.setItem("filters", '{}');
+      filters = {};
+    } 
     handleGetAcquisitions(filters);
   }, [])
 
+  /**
+   * Clears the saved filters from the session storage and triggers a new acquisition fetching with no filters.
+   */
   const clearFilters = () => {
+    /**
+     * @function window.sessionStorage.setItem
+     * @param {string} key - The key to store the value.
+     * @param {string} value - The value to store.
+     */
     window.sessionStorage.setItem('filters', '{}');
+
+    /**
+     * @function handleGetAcquisitions
+     * @param {object} filters - An object containing the filters to apply.
+     */
     handleGetAcquisitions({});
   }
 

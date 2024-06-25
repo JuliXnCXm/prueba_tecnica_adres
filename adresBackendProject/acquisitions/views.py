@@ -8,19 +8,25 @@ from acquisitions.serializers import AcquisitionSerializer , AcquisitionHistoryS
 class AcquisitionListView(APIView):
     def post(self, request):
         """
-        Retrieves all acquisitions.
+        Filters acquisitions based on the query parameters in the request data.
 
         Args:
-        request (HttpRequest): The HTTP request object.
+        request (HttpRequest): The HTTP request object containing the data for the query.
 
         Returns:
-        Response: A JSON response containing a list of all acquisitions.
+        Response: A JSON response containing the filtered acquisitions data.
 
         Raises:
-        Http404: If no acquisitions are found.
+        ValueError: If the data provided in the request is not valid.
+
+        If the request data is not empty, it filters the acquisitions based on the query parameters.
+        The parameters 'section', 'type', 'supplier', and 'documentation' are filtered using the 'icontains' lookup.
+        The parameters 'quantity', 'unit_value', 'total_value', and 'budget' are filtered using the 'gt' lookup.
+        The parameter 'active' is filtered using a boolean value based on the input.
+        The filtered acquisitions are then serialized and returned as a JSON response.
         """
         acquisitions = Acquisition.objects.all()
-        
+
         if len(request.data) != 0:
             for key, value in request.data.items():
                 if key in ['section', 'type', 'supplier', 'documentation']:
