@@ -34,13 +34,8 @@
 
 ## :dart: About ##
 
-Describe your project
 
-## :sparkles: Features ##
-
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+Este proyecto es el backend side de la prueba tecnica que funciona para la gestion de adquisisiones en la ADRES
 
 ## :rocket: Technologies ##
 
@@ -59,11 +54,16 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 # Clone this project
 $ git clone https://github.com/JuliXnCXm/prueba_tecnica_adres
 
+# create Environment
+$ python3 -m venv project
+
+# start Environment
+$ source project/bin/activate
+
 # Access
 $ cd prueba_tecnica_adres
 
-# create Environment
-$ python3 -m venv project
+$ cd adresBackendProject
 
 # Install dependencies
 $ pip install -r requirements.txt
