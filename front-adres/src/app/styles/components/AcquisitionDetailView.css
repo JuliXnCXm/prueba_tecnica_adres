@@ -1,0 +1,92 @@
+.details-container {
+  list-style: none;
+  width: 90%;
+  padding: 0;
+
+}
+
+.details-container li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 10px;
+  font-family: 'Roboto';
+  border-bottom: 1px solid rgb(192, 190, 190);
+}
+
+.details-container li span {
+  font-weight: 400;
+  color: rgb(192, 190, 190);
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+
+.details-container li p {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+#stateItem {
+  border: none;
+}
+
+#stateItem p {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 0;
+  opacity: 52%;
+  color: white;
+  padding: 5px 25px;
+  border-radius: 10px;
+}
+
+.activeState {
+  background-color: #12A150;
+}
+
+.inactiveState {
+  background-color: #C73202;
+}
+
+.historyButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #283557;
+  color: white;
+  padding: 5px 25px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.historyButton:hover {
+  cursor: pointer;
+}
+
+.history-container {
+  width: 100%;
+  list-style: none;
+  padding-left: 0;
+}
+
+.historyItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-family: 'Roboto';
+  border-bottom: 1px solid rgb(184, 183, 183);
+}
+
+.historyItem:hover {
+  background-color:  rgb(235, 235, 235);
+}
+
+.historyItem p {
+  margin-bottom: 0;
+}

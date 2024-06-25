@@ -7,10 +7,9 @@ class Acquisition(models.Model):
   quantity = models.IntegerField()
   unit_value = models.DecimalField(max_digits=15, decimal_places=2)
   total_value = models.DecimalField(max_digits=15, decimal_places=2)
-  acquisition_date = models.DateField()
   supplier = models.CharField(max_length=200)
   documentation = models.TextField()
-  created_at = models.DateTimeField(auto_created=True)
+  acquisition_date = models.DateTimeField(auto_created=True)
   modified_at = models.DateTimeField(auto_now=True)
   active = models.BooleanField(default=True)
   

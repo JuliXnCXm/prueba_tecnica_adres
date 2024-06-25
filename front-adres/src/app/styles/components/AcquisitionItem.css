@@ -1,0 +1,7 @@
+td {
+  border: none;
+}
+
+#custom-switch:hover {
+  cursor: pointer;
+}

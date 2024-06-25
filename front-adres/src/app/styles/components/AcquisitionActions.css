@@ -1,0 +1,9 @@
+.actions-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.actions-container span:hover {
+  cursor: pointer;
+}

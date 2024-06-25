@@ -1,0 +1,33 @@
+.button-form {
+  padding: 5px 30px;
+  background-color: #283557;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  grid-area: 7 / 1 / 7 / 3;
+  height: min-content;
+  width: min-content;
+  display: flex;
+  justify-self: center;
+}
+
+form {
+  display: grid;
+  gap: 15px;
+  margin-top: 15px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+}
+
+.documentation-area {
+  grid-area: 5 / 1 / 7 / 3;
+}
+
+.documentation-area > div {
+  height: 100%;
+}
+
+#documentation{
+  height: 100%;
+}
