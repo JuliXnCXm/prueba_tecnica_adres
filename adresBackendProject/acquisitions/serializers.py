@@ -5,7 +5,7 @@ from acquisitions.models import Acquisition, AcquisitionHistory
 class AcquisitionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Acquisition
-        fields = ['id', 'budget', 'section', 'type', 'quantity', 'unit_value', 'total_value', 'acquisition_date', 'supplier', 'documentation', 'created_at', 'modified_at', 'active']
+        fields = ['id', 'budget', 'section', 'type', 'quantity', 'unit_value', 'total_value', 'acquisition_date', 'supplier', 'documentation', 'modified_at', 'active']
         
         
 class AcquisitionHistorySerializer(serializers.ModelSerializer):

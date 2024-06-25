@@ -1,0 +1,33 @@
+.delete-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-container_title {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.delete-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-buttons button {
+  margin: 20px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  padding: 5px 30px;
+}
+
+.delete-buttons button:first-child {
+  background-color: #11D5B1;
+}
+
+.delete-buttons button:last-child {
+  background-color: #293657;
+}

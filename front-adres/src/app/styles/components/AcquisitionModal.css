@@ -1,0 +1,28 @@
+.modal-dialog {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.modal-body h4 {
+  font-weight: 400;
+  text-align: start;
+}
+
+.modal {
+  overflow: hidden;
+}
+
+.modal-content {
+  max-height: 50vh;
+  overflow: scroll;
+}

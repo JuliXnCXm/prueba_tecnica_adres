@@ -6,7 +6,7 @@ from acquisitions.models import Acquisition , AcquisitionHistory
 from acquisitions.serializers import AcquisitionSerializer , AcquisitionHistorySerializer
 
 class AcquisitionListView(APIView):
-    def get(self, request):
+    def post(self, request):
         """
         Retrieves all acquisitions.
 
@@ -20,6 +20,21 @@ class AcquisitionListView(APIView):
         Http404: If no acquisitions are found.
         """
         acquisitions = Acquisition.objects.all()
+        
+        if len(request.data) != 0:
+            for key, value in request.data.items():
+                if key in ['section', 'type', 'supplier', 'documentation']:
+                    acquisitions = acquisitions.filter(**{f'{key}__icontains': value.lower()})
+                elif key in ['quantity', 'unit_value', 'total_value', 'budget']:
+                    acquisitions = acquisitions.filter(**{f'{key}__gt': value})
+                elif key == 'active':
+                    print(True if value == 'Activo' else False)
+                    if value == 'All':
+                        acquisitions = acquisitions.filter(active__in=[True, False])
+                    else :
+                        True if value == 'Activo' else False
+                        print()
+                        acquisitions = acquisitions.filter(active=(True if value == 'Activo' else False) )
         serializer = AcquisitionSerializer(acquisitions, many=True)
         return Response(serializer.data)
 
