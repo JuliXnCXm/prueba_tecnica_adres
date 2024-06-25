@@ -34,6 +34,8 @@
 ## :dart: About ##
 
 Describe your project
+Este proyecto fue desarrollado tomando como referencia el siguiente diseño en figma:
+https://www.figma.com/design/qS9qkloXXUcKKk1Z0nTTKB/ADRES?node-id=2001-10385&t=Fd31cw197YSValE1-1
 
 
 ## :rocket: Technologies ##
